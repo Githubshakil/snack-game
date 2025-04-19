@@ -1,5 +1,5 @@
 
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
        const GRID_SIZE = 20;
        const CELL_SIZE = 20;       
        const INITIAL_SNAKE = [{ x: 10, y: 10 }];
-       const INITIAL_FOOD = [{ x: 15, y: 15 }];
+       const INITIAL_FOOD = { x: 15, y: 15 };
        const INITIAL_DIRECTION = "RIGHT";
        
        
@@ -23,20 +23,20 @@ function App() {
             x: Math.floor(Math.random() * GRID_SIZE),
             y: Math.floor(Math.random() * GRID_SIZE),
           };
-          return setSnake.some((item)=> item.x === newFood.x && item.y === newFood.y) ? generateFood() : newFood;
+          return snake.some((item) => item.x === newFood.x && item.y === newFood.y) ? generateFood() : newFood;
         }
 
         const moveSnake = () =>{
           if(gameOver) return;
 
-          const head = {...snake[0]}
+          const head = { ...snake[0] };
           
           switch(direction){
             case "UP":
               head.y -= 1;
               break;
             case "DOWN":
-              head.x += 1;
+              head.y += 1;
               break;
             case "LEFT":
               head.x -= 1
@@ -70,16 +70,16 @@ function App() {
             const handleKeyPress = (e)=>{
               switch(e.key){
                 case "ArrowUp":
-                  if(direction !== "UP") setDirection("DOWN")
+                  if(direction !== "DOWN") setDirection("UP");
                     break;
                 case "ArrowDown":
-                  if(direction !== "DOWN") setDirection("UP")
+                  if(direction !== "UP") setDirection("DOWN");
                     break;
                 case "ArrowLeft":
-                  if(direction !== "LEFT ") setDirection("RIGHT")
+                  if(direction !== "RIGHT") setDirection("LEFT");
                     break;
                 case "ArrowRight":
-                  if(direction !== "RIGHT") setDirection("LEFT")
+                  if(direction !== "LEFT") setDirection("RIGHT");
                     break;
 
               }
@@ -97,7 +97,7 @@ function App() {
             return ()=> {
               clearInterval(gameLoop)
             }
-          },[snake,  direction, gameOver]);
+          }, [direction, gameOver]);
 
 
           const renderGrid = () => {

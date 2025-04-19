@@ -1,0 +1,113 @@
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f5fa 0%, #3f0a5e 100%);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.game-container{
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  -webkit-box-shadow: 0px 7px 33px 5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 7px 33px 5px rgba(0,0,0,0.75);
+  box-shadow: 0px 7px 33px 5px rgba(168, 235, 58, 0.75);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.game-board{
+  display: grid;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  background:#0f0d0c ;
+  border-radius: 10px;
+
+}
+
+.cell{
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-sizing: border-box;
+}
+
+.snake{
+  
+  background: linear-gradient(45deg, #00ff88, #00ccff);
+  border-radius: 5px;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0px 0px 10px rgba(0, 255, 136, 0.5), 0px 0px 20px rgba(0, 204 ,255 , 0.5) ;
+}
+
+.food{
+  width: 20px;
+  height: 20px;
+  background: #ff0066;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(255, 0, 102, 0.5), 0px 0px 20px rgba( 255 , 0, 102 , 0.5) ;
+  animation: glow 1.5s infinite alternate;
+}
+
+
+.score{
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.game-over{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+  animation: fadeIn 0.5s;
+
+}
+
+.game-over h2{
+    margin: 0;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.game-over button{
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background: #ff0066;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+@keyframes pulse {
+  0%{
+      transform: scale(1);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%{
+    background: #ff0066;
+}
+100%{
+  background: #ff66b2;
+}
+}
